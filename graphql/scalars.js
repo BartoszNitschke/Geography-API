@@ -1,6 +1,5 @@
 import { GraphQLScalarType } from 'graphql';
 
-// Skalar dla kodów (2 wielkie litery)
 const CountryCode = new GraphQLScalarType({
     name: 'CountryCode',
     description: 'Kod kraju składający się z 2 wielkich liter (np. PL, DE, FR)',
@@ -21,7 +20,6 @@ const CountryCode = new GraphQLScalarType({
     },
 });
 
-// Skalar dla nazw (2-100 znaków)
 const Name = new GraphQLScalarType({
     name: 'Name',
     description: 'Nazwa o długości od 2 do 100 znaków',
@@ -42,7 +40,6 @@ const Name = new GraphQLScalarType({
     },
 });
 
-// Skalar dla dużych liczb (populacja, powierzchnia)
 const BigNumber = new GraphQLScalarType({
     name: 'BigNumber',
     description: 'Duża liczba całkowita jako string (np. populacja, powierzchnia)',

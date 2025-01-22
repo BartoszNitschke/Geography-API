@@ -2,11 +2,9 @@ export const applyFilters = (item, filters) => {
     for (const { field, operation, value } of filters) {
         const itemValue = item[field];
 
-        // Konwersja wartości na odpowiedni typ
         let compareValue = value;
         let compareItemValue = itemValue;
 
-        // Konwersja wartości numerycznych
         if (field === 'population' || field === 'area') {
             compareValue = parseFloat(value);
             compareItemValue = parseFloat(itemValue);

@@ -171,7 +171,7 @@ export const resolvers = {
                     item.continent.countries[countryIndex] = {
                         ...item.continent.countries[countryIndex],
                         ...countryInput,
-                        code // zachowujemy oryginalny kod
+                        code 
                     };
                     updated = true;
                     return item.continent.countries[countryIndex];
@@ -228,7 +228,6 @@ export const resolvers = {
             for (const item of data) {
                 const country = item.continent.countries.find(c => c.code === countryCode);
                 if (country) {
-                    // Sprawdź, czy zabytek o takiej nazwie już istnieje
                     if (country.landmarks.some(l => l.name === landmark.name)) {
                         throw new Error("Zabytek o takiej nazwie już istnieje");
                     }
