@@ -9,7 +9,7 @@ GET {{baseUrl}}/continent/countries
 Content-Type: application/json
 
 ### Pobierz szczegóły konkretnego kraju w kontynencie
-GET {{baseUrl}}/continent/countries/PL
+GET {{baseUrl}}/continent/countries/TW
 Content-Type: application/json
 
 ### Pobierz zabytki konkretnego kraju w kontynencie
@@ -43,10 +43,10 @@ POST {{baseUrl}}/countries
 Content-Type: application/json
 
 {
-    "name": "Polska",
-    "code": "PL",
-    "capital": "Warszawa",
-    "population": "37846611",
+    "name": "Tajwan",
+    "code": "TW",
+    "capital": "Tajpej",
+    "population": "12312",
     "area": "312696",
     "landmarks": []
 }
@@ -63,7 +63,7 @@ Content-Type: application/json
 }
 
 ### Usuń kraj
-DELETE {{baseUrl}}/countries/PL
+DELETE {{baseUrl}}/countries/TW
 Content-Type: application/json
 
 ### Pobierz wszystkie zabytki

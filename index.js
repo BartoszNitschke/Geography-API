@@ -1,37 +1,45 @@
 import express from "express";
 import cors from 'cors';
-
-import continents from "./routes/continents.js";
-import countries from "./routes/countries.js";
-import landmarks from "./routes/landmarks.js";
-
+import { ApolloServer } from "@apollo/server";
+import { expressMiddleware } from "@apollo/server/express4";
+import { typeDefs } from "./graphql/schema.js";
+import { resolvers } from "./graphql/resolvers.js";
+import { CountryCode, Name, BigNumber } from "./graphql/scalars.js";
 
 const app = express();
+const port = 4000;
 
+const apolloServer = new ApolloServer({
+    typeDefs,
+    resolvers: {
+        CountryCode,
+        Name,
+        BigNumber,
+        ...resolvers
+    },
+    formatError: (error) => {
+        console.error('GraphQL Error:', error);
+        return {
+            message: error.message,
+            code: error.extensions?.code || 'INTERNAL_SERVER_ERROR',
+            path: error.path
+        };
+    },
+});
+
+await apolloServer.start();
+
+app.use(cors());
 app.use(express.json());
 
-const allowedOrigins = ['http://localhost:3000']; 
-app.use(cors({
-    origin: allowedOrigins,
-    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-}));
+app.use("/graphql", 
+    expressMiddleware(apolloServer, {
+        context: async ({ req }) => ({
+            token: req.headers.authorization,
+        })
+    })
+);
 
-app.use((req, res, next) => {
-    res.setHeader('X-Powered-By', 'Express');
-    res.setHeader('Cache-Control', 'no-store');
-    next();
-});
-
-
-
-app.use('/api/', continents, countries, landmarks);
-
-app.get('/', (req, res) => {
-    res.send('Witamy w API drużyn NBA!');
-});
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Serwer działa na porcie ${PORT}`);
+app.listen(port, () => {
+    console.log(`🚀 Serwer GraphQL działa na http://localhost:${port}/graphql`);
 });
