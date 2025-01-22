@@ -1,37 +1,39 @@
-import express from "express";
-import cors from 'cors';
+import * as grpc from "@grpc/grpc-js";
+import * as protoLoader from "@grpc/proto-loader";
+import { continentResolvers } from "./continentsResolver.js";
+import { countryResolvers, extendedCountryResolvers } from "./countriesResolver.js";
+import { landmarkResolvers, extendedLandmarkResolvers } from "./landmarksResolver.js";
 
-import continents from "./routes/continents.js";
-import countries from "./routes/countries.js";
-import landmarks from "./routes/landmarks.js";
+// Ładowanie definicji proto
+const continentPackageDefinition = protoLoader.loadSync("proto/continents.proto");
+const countryPackageDefinition = protoLoader.loadSync("proto/countries.proto");
+const landmarkPackageDefinition = protoLoader.loadSync("proto/landmarks.proto");
 
+// Ładowanie pakietów
+const continentProto = grpc.loadPackageDefinition(continentPackageDefinition);
+const countryProto = grpc.loadPackageDefinition(countryPackageDefinition);
+const landmarkProto = grpc.loadPackageDefinition(landmarkPackageDefinition);
 
-const app = express();
+const server = new grpc.Server();
 
-app.use(express.json());
+// Dodawanie podstawowych serwisów
+server.addService(continentProto.continents.ContinentService.service, continentResolvers);
+server.addService(countryProto.continents.CountryService.service, countryResolvers);
+server.addService(landmarkProto.continents.LandmarkService.service, landmarkResolvers);
 
-const allowedOrigins = ['http://localhost:3000']; 
-app.use(cors({
-    origin: allowedOrigins,
-    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-}));
+// Dodawanie rozszerzonych serwisów
+server.addService(countryProto.continents.ExtendedCountryService.service, extendedCountryResolvers);
+server.addService(landmarkProto.continents.ExtendedLandmarkService.service, extendedLandmarkResolvers);
 
-app.use((req, res, next) => {
-    res.setHeader('X-Powered-By', 'Express');
-    res.setHeader('Cache-Control', 'no-store');
-    next();
-});
-
-
-
-app.use('/api/', continents, countries, landmarks);
-
-app.get('/', (req, res) => {
-    res.send('Witamy w API drużyn NBA!');
-});
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Serwer działa na porcie ${PORT}`);
-});
+server.bindAsync(
+    "127.0.0.1:50051",
+    grpc.ServerCredentials.createInsecure(),
+    (err) => {
+        if (err) {
+            console.error('Błąd podczas uruchamiania serwera:', err);
+            return;
+        }
+        server.start();
+        console.log('Serwer gRPC uruchomiony na http://127.0.0.1:50051');
+    }
+);

@@ -1,0 +1,213 @@
+syntax = "proto3";
+
+package continents;
+
+import "proto/continents.proto";  // Importujemy definicje z continents.proto
+
+// Typy dla zabytków
+message Landmark {
+    string name = 1;
+    string type = 2;
+    string description = 3;
+}
+
+message LandmarkInput {
+    string name = 1;
+    string type = 2;
+    string description = 3;
+}
+
+// Typy dla krajów
+message Country {
+    string name = 1;
+    string capital = 2;
+    string code = 3;
+    repeated Landmark landmarks = 4;
+}
+
+message CountryInput {
+    string name = 1;
+    string capital = 2;
+    string code = 3;
+    repeated LandmarkInput landmarks = 4;
+}
+
+// Typy dla kontynentów
+message Continent {
+    string name = 1;
+    string code = 2;
+    repeated Country countries = 3;
+    string population = 4;
+    string area = 5;
+}
+
+message ContinentInput {
+    string name = 1;
+    string code = 2;
+    string population = 3;
+    string area = 4;
+}
+
+// Filtry
+message ContinentFilter {
+    string code = 1;
+}
+
+message CountryFilter {
+    string code = 1;
+    string continent_code = 2;
+}
+
+message LandmarkFilter {
+    string country_code = 1;
+    string name = 2;
+}
+
+// Odpowiedzi
+message DeleteResponse {
+    bool success = 1;
+    string message = 2;
+    string code = 3;
+}
+
+// Serwis dla kontynentów
+service ContinentService {
+    // Zapytania
+    rpc GetContinents(ContinentFilter) returns (stream Continent);
+    rpc GetContinent(ContinentFilter) returns (Continent);
+    
+    // Mutacje
+    rpc UpdateContinent(ContinentInput) returns (Continent);
+    rpc DeleteContinent(ContinentFilter) returns (DeleteResponse);
+}
+
+// Serwis dla krajów
+service CountryService {
+    // Zapytania
+    rpc GetCountries(CountryFilter) returns (stream Country);
+    rpc GetCountry(CountryFilter) returns (Country);
+    
+    // Mutacje
+    rpc CreateCountry(CountryInput) returns (Country);
+    rpc UpdateCountry(CountryInput) returns (Country);
+    rpc DeleteCountry(CountryFilter) returns (DeleteResponse);
+}
+
+// Serwis dla zabytków
+service LandmarkService {
+    // Zapytania
+    rpc GetLandmarks(LandmarkFilter) returns (stream Landmark);
+    rpc GetLandmark(LandmarkFilter) returns (Landmark);
+    
+    // Mutacje
+    rpc AddLandmark(LandmarkInput) returns (Landmark);
+    rpc UpdateLandmark(LandmarkInput) returns (Landmark);
+    rpc DeleteLandmark(LandmarkFilter) returns (DeleteResponse);
+}
+
+// Rozszerzenia dla krajów
+message CountryDetails {
+    string population = 1;
+    string area = 2;
+    repeated string languages = 3;
+    string currency = 4;
+    string timezone = 5;
+}
+
+// Rozszerzone typy dla krajów
+message ExtendedCountry {
+    Country base = 1;           // Podstawowe informacje z continents.proto
+    CountryDetails details = 2; // Dodatkowe szczegóły
+}
+
+message ExtendedCountryInput {
+    CountryInput base = 1;
+    CountryDetails details = 2;
+}
+
+// Filtry specyficzne dla krajów
+message ExtendedCountryFilter {
+    CountryFilter base = 1;     // Podstawowy filtr z continents.proto
+    string language = 2;        // Filtrowanie po języku
+    string currency = 3;        // Filtrowanie po walucie
+    string timezone = 4;        // Filtrowanie po strefie czasowej
+}
+
+// Serwis dla rozszerzonych informacji o krajach
+service ExtendedCountryService {
+    // Zapytania
+    rpc GetExtendedCountries(ExtendedCountryFilter) returns (stream ExtendedCountry);
+    rpc GetExtendedCountry(CountryFilter) returns (ExtendedCountry);
+    
+    // Mutacje
+    rpc CreateExtendedCountry(ExtendedCountryInput) returns (ExtendedCountry);
+    rpc UpdateExtendedCountry(ExtendedCountryInput) returns (ExtendedCountry);
+    rpc DeleteExtendedCountry(CountryFilter) returns (DeleteResponse);
+    
+    // Statystyki
+    rpc GetCountryStats(CountryFilter) returns (CountryStats);
+}
+
+// Statystyki dla kraju
+message CountryStats {
+    string total_landmarks = 1;
+    repeated string landmark_types = 2;
+    map<string, int32> landmarks_by_type = 3;
+}
+
+// Rozszerzenia dla zabytków
+message LandmarkDetails {
+    string creation_date = 1;
+    string architect = 2;
+    string status = 3;          // np. "preserved", "ruins", "restored"
+    repeated string categories = 4;  // np. ["UNESCO", "Historical", "Cultural"]
+    string visiting_hours = 5;
+    string ticket_price = 6;
+    string website = 7;
+}
+
+// Rozszerzone typy dla zabytków
+message ExtendedLandmark {
+    Landmark base = 1;           // Podstawowe informacje z continents.proto
+    LandmarkDetails details = 2; // Dodatkowe szczegóły
+}
+
+message ExtendedLandmarkInput {
+    LandmarkInput base = 1;
+    LandmarkDetails details = 2;
+}
+
+// Filtry specyficzne dla zabytków
+message ExtendedLandmarkFilter {
+    LandmarkFilter base = 1;     // Podstawowy filtr z continents.proto
+    string category = 2;         // Filtrowanie po kategorii
+    string status = 3;          // Filtrowanie po statusie
+    string price_range = 4;     // Filtrowanie po zakresie cenowym
+}
+
+// Statystyki dla zabytków
+message LandmarkStats {
+    int32 total_count = 1;
+    map<string, int32> by_type = 2;
+    map<string, int32> by_status = 3;
+    map<string, int32> by_category = 4;
+    repeated string most_visited = 5;
+}
+
+// Serwis dla rozszerzonych informacji o zabytkach
+service ExtendedLandmarkService {
+    // Zapytania
+    rpc GetExtendedLandmarks(ExtendedLandmarkFilter) returns (stream ExtendedLandmark);
+    rpc GetExtendedLandmark(LandmarkFilter) returns (ExtendedLandmark);
+    
+    // Mutacje
+    rpc CreateExtendedLandmark(ExtendedLandmarkInput) returns (ExtendedLandmark);
+    rpc UpdateExtendedLandmark(ExtendedLandmarkInput) returns (ExtendedLandmark);
+    rpc DeleteExtendedLandmark(LandmarkFilter) returns (DeleteResponse);
+    
+    // Statystyki i raporty
+    rpc GetLandmarkStats(LandmarkFilter) returns (LandmarkStats);
+    rpc GetLandmarksByType(string) returns (stream ExtendedLandmark);
+    rpc GetLandmarksByCategory(string) returns (stream ExtendedLandmark);
+    rpc GetLandmarksByStatus(string) returns (stream ExtendedLandmark);
+} 
