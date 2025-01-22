@@ -26,7 +26,6 @@ const saveCountriesData = (data) => {
     });
 };
 
-// Pobierz wszystkie kraje
 router.get('/countries', async (req, res) => {
     res.setHeader('Cache-Control', 'no-store');
     res.setHeader('X-Powered-By', 'Express');
@@ -49,7 +48,6 @@ router.get('/countries', async (req, res) => {
     }
 });
 
-// Pobierz szczegóły kraju po kodzie
 router.get('/countries/:code', async (req, res) => {
     res.setHeader('Cache-Control', 'no-store');
     res.setHeader('X-Powered-By', 'Express');
@@ -83,7 +81,6 @@ router.get('/countries/:code', async (req, res) => {
     }
 });
 
-// Dodaj nowy kraj
 router.post('/countries', async (req, res) => {
     res.setHeader('Cache-Control', 'no-store');
     res.setHeader('X-Powered-By', 'Express');
@@ -113,7 +110,6 @@ router.post('/countries', async (req, res) => {
             });
         }
 
-        // Dodaj kraj do pierwszego kontynentu (można dostosować logikę)
         data[0].continent.countries.push({
             ...newCountry,
             landmarks: []
@@ -191,7 +187,6 @@ router.put('/countries/:code', async (req, res) => {
     }
 });
 
-// Usuń kraj
 router.delete('/countries/:code', async (req, res) => {
     res.setHeader('Content-Type', 'application/json');
     res.setHeader('X-Action', 'Country Deletion');

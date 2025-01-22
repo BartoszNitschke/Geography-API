@@ -26,7 +26,6 @@ const saveContinentsData = (data) => {
     });
 };
 
-// Pobierz informacje o kontynencie
 router.get('/continent', async (req, res) => {
     res.setHeader('Cache-Control', 'no-store');
     res.setHeader('X-Powered-By', 'Express');
@@ -48,7 +47,6 @@ router.get('/continent', async (req, res) => {
     }
 });
 
-// Pobierz listę krajów w kontynencie
 router.get('/continent/countries', async (req, res) => {
     res.setHeader('Cache-Control', 'no-store');
     res.setHeader('X-Powered-By', 'Express');
@@ -77,7 +75,6 @@ router.get('/continent/countries', async (req, res) => {
     }
 });
 
-// Pobierz szczegóły konkretnego kraju w kontynencie
 router.get('/continent/countries/:code', async (req, res) => {
     res.setHeader('Cache-Control', 'no-store');
     res.setHeader('X-Powered-By', 'Express');
@@ -120,7 +117,6 @@ router.get('/continent/countries/:code', async (req, res) => {
     }
 });
 
-// Pobierz zabytki konkretnego kraju w kontynencie
 router.get('/continent/countries/:code/landmarks', async (req, res) => {
     res.setHeader('Cache-Control', 'no-store');
     res.setHeader('X-Powered-By', 'Express');
@@ -164,7 +160,6 @@ router.get('/continent/countries/:code/landmarks', async (req, res) => {
     }
 });
 
-// Aktualizuj kontynent
 router.put('/continent/:code', async (req, res) => {
     res.setHeader('Cache-Control', 'no-store');
     res.setHeader('X-Powered-By', 'Express');
@@ -212,7 +207,6 @@ router.put('/continent/:code', async (req, res) => {
     }
 });
 
-// Usuń kontynent
 router.delete('/continent/:code', async (req, res) => {
     res.setHeader('Content-Type', 'application/json');
     res.setHeader('X-Action', 'Continent Deletion');

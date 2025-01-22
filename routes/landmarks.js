@@ -35,7 +35,6 @@ const saveLandmarksData = (data) => {
     });
 };
 
-// Pobierz wszystkie zabytki
 router.get('/landmarks', async (req, res) => {
     res.setHeader('Cache-Control', 'no-store');
     res.setHeader('X-Powered-By', 'Express');
@@ -66,7 +65,6 @@ router.get('/landmarks', async (req, res) => {
     }
 });
 
-// Pobierz zabytki dla konkretnego kraju
 router.get('/landmarks/country/:code', async (req, res) => {
     res.setHeader('Cache-Control', 'no-store');
     res.setHeader('X-Powered-By', 'Express');
@@ -100,7 +98,6 @@ router.get('/landmarks/country/:code', async (req, res) => {
     }
 });
 
-// Dodaj nowy zabytek do kraju
 router.post('/landmarks/country/:code', async (req, res) => {
     res.setHeader('Content-Type', 'application/json');
     res.setHeader('X-Action', 'Landmark Addition');
@@ -193,7 +190,6 @@ router.delete('/landmarks/country/:code/:name', async (req, res) => {
     }
 });
 
-// Aktualizuj zabytek
 router.put('/landmarks/country/:code/:name', async (req, res) => {
     res.setHeader('Cache-Control', 'no-store');
     res.setHeader('X-Powered-By', 'Express');
