@@ -2,7 +2,6 @@ syntax = "proto3";
 
 package continents;
 
-// Typy dla zabytków
 message Landmark {
     string name = 1;
     string type = 2;
@@ -15,7 +14,6 @@ message LandmarkInput {
     string description = 3;
 }
 
-// Typy dla krajów
 message Country {
     string name = 1;
     string capital = 2;
@@ -30,7 +28,6 @@ message CountryInput {
     repeated LandmarkInput landmarks = 4;
 }
 
-// Typy dla kontynentów
 message Continent {
     string name = 1;
     string code = 2;
@@ -46,7 +43,6 @@ message ContinentInput {
     string area = 4;
 }
 
-// Filtry
 message ContinentFilter {
     string code = 1;
 }
@@ -61,43 +57,33 @@ message LandmarkFilter {
     string name = 2;
 }
 
-// Odpowiedzi
 message DeleteResponse {
     bool success = 1;
     string message = 2;
     string code = 3;
 }
 
-// Serwis dla kontynentów
 service ContinentService {
-    // Zapytania
     rpc GetContinents(ContinentFilter) returns (stream Continent);
     rpc GetContinent(ContinentFilter) returns (Continent);
     
-    // Mutacje
     rpc UpdateContinent(ContinentInput) returns (Continent);
     rpc DeleteContinent(ContinentFilter) returns (DeleteResponse);
 }
 
-// Serwis dla krajów
 service CountryService {
-    // Zapytania
     rpc GetCountries(CountryFilter) returns (stream Country);
     rpc GetCountry(CountryFilter) returns (Country);
     
-    // Mutacje
     rpc CreateCountry(CountryInput) returns (Country);
     rpc UpdateCountry(CountryInput) returns (Country);
     rpc DeleteCountry(CountryFilter) returns (DeleteResponse);
 }
 
-// Serwis dla zabytków
 service LandmarkService {
-    // Zapytania
     rpc GetLandmarks(LandmarkFilter) returns (stream Landmark);
     rpc GetLandmark(LandmarkFilter) returns (Landmark);
     
-    // Mutacje
     rpc AddLandmark(LandmarkInput) returns (Landmark);
     rpc UpdateLandmark(LandmarkInput) returns (Landmark);
     rpc DeleteLandmark(LandmarkFilter) returns (DeleteResponse);

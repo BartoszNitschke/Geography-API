@@ -75,7 +75,7 @@ export const continentResolvers = {
         data[continentIndex].continent = {
             ...data[continentIndex].continent,
             ...continentInput,
-            code // zachowujemy oryginalny kod
+            code 
         };
 
         const result = mapContinent(data[continentIndex].continent);

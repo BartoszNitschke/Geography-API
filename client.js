@@ -1,17 +1,15 @@
 import * as grpc from "@grpc/grpc-js";
 import * as protoLoader from "@grpc/proto-loader";
 
-// Ładowanie definicji proto
+
 const continentPackageDefinition = protoLoader.loadSync("proto/continents.proto");
 const countryPackageDefinition = protoLoader.loadSync("proto/countries.proto");
 const landmarkPackageDefinition = protoLoader.loadSync("proto/landmarks.proto");
 
-// Ładowanie pakietów
 const continentProto = grpc.loadPackageDefinition(continentPackageDefinition);
 const countryProto = grpc.loadPackageDefinition(countryPackageDefinition);
 const landmarkProto = grpc.loadPackageDefinition(landmarkPackageDefinition);
 
-// Klient dla podstawowych serwisów
 const clientContinent = new continentProto.continents.ContinentService(
     "127.0.0.1:50051",
     grpc.ChannelCredentials.createInsecure(),
@@ -30,7 +28,6 @@ const clientLandmark = new landmarkProto.continents.LandmarkService(
     (err) => err && console.error('Błąd połączenia z serwisem zabytków:', err)
 );
 
-// Klienty dla rozszerzonych serwisów
 const clientExtendedCountry = new countryProto.continents.ExtendedCountryService(
     "127.0.0.1:50051",
     grpc.ChannelCredentials.createInsecure(),

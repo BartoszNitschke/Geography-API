@@ -46,7 +46,6 @@ export const countryResolvers = {
         const { filter, sort } = req.request || {};
         let result = [];
 
-        // Zbieramy kraje ze wszystkich kontynentów
         data.forEach(item => {
             result = result.concat(item.continent.countries);
         });
@@ -105,7 +104,6 @@ export const countryResolvers = {
             return;
         }
 
-        // Sprawdzamy czy kraj o takim kodzie już istnieje
         const exists = data[continentIndex].continent.countries.some(c => c.code === countryInput.code);
         if (exists) {
             res({ code: 6, message: "Kraj o takim kodzie już istnieje" }, null);
@@ -137,7 +135,7 @@ export const countryResolvers = {
                 item.continent.countries[countryIndex] = {
                     ...item.continent.countries[countryIndex],
                     ...countryInput,
-                    code // zachowujemy oryginalny kod
+                    code 
                 };
                 updated = true;
                 const result = mapCountry(item.continent.countries[countryIndex]);
@@ -186,8 +184,4 @@ export const countryResolvers = {
             code: "200"
         });
     }
-};
-
-export const extendedCountryResolvers = {
-    // implementacja rozszerzonych resolverów
 };

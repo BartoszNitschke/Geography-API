@@ -47,7 +47,6 @@ export const landmarkResolvers = {
         const { filter, sort } = req.request || {};
         let result = [];
 
-        // Zbieramy wszystkie zabytki ze wszystkich krajów
         data.forEach(item => {
             item.continent.countries.forEach(country => {
                 if (country.landmarks) {
@@ -212,7 +211,6 @@ export const extendedLandmarkResolvers = {
         let landmarks = [];
 
         if (country_code) {
-            // Zbierz zabytki tylko z danego kraju
             data.some(item => {
                 const country = item.continent.countries.find(c => c.code === country_code);
                 if (country) {
@@ -222,7 +220,6 @@ export const extendedLandmarkResolvers = {
                 return false;
             });
         } else {
-            // Zbierz wszystkie zabytki
             data.forEach(item => {
                 item.continent.countries.forEach(country => {
                     landmarks = landmarks.concat(country.landmarks);
@@ -239,23 +236,19 @@ export const extendedLandmarkResolvers = {
         };
 
         landmarks.forEach(landmark => {
-            // Zliczanie po typach
             stats.by_type[landmark.type] = (stats.by_type[landmark.type] || 0) + 1;
             
-            // Zliczanie po statusach
             if (landmark.details?.status) {
                 stats.by_status[landmark.details.status] = 
                     (stats.by_status[landmark.details.status] || 0) + 1;
             }
             
-            // Zliczanie po kategoriach
             if (landmark.details?.category) {
                 stats.by_category[landmark.details.category] = 
                     (stats.by_category[landmark.details.category] || 0) + 1;
             }
         });
 
-        // Dodanie najczęściej odwiedzanych zabytków
         stats.most_visited = landmarks
             .sort((a, b) => (b.details?.visitors || 0) - (a.details?.visitors || 0))
             .slice(0, 5)

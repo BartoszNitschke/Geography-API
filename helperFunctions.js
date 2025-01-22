@@ -2,20 +2,16 @@ export const applyFilters = (item, filter) => {
     if (!filter) return true;
     
     return Object.entries(filter).every(([key, value]) => {
-        // Pomijamy puste filtry
         if (!value) return true;
 
-        // Obsługa filtrów zagnieżdżonych (np. dla ExtendedCountryFilter)
         if (key === 'base' && typeof value === 'object') {
             return applyFilters(item, value);
         }
 
-        // Obsługa filtrów dla tablic (np. languages w CountryDetails)
         if (Array.isArray(item[key])) {
             return item[key].includes(value);
         }
 
-        // Obsługa filtrów tekstowych z częściowym dopasowaniem
         if (typeof item[key] === 'string' && typeof value === 'string') {
             return item[key].toLowerCase().includes(value.toLowerCase());
         }
@@ -70,10 +66,8 @@ export const validateLandmarkData = (landmark) => {
 };
 
 export const validateExtendedCountryData = (country) => {
-    // Najpierw sprawdzamy podstawowe dane
     validateCountryData(country.base);
 
-    // Sprawdzamy dodatkowe pola
     const details = country.details;
     if (details) {
         if (details.population && isNaN(Number(details.population))) {
@@ -89,10 +83,8 @@ export const validateExtendedCountryData = (country) => {
 };
 
 export const validateExtendedLandmarkData = (landmark) => {
-    // Najpierw sprawdzamy podstawowe dane
     validateLandmarkData(landmark.base);
 
-    // Sprawdzamy dodatkowe pola
     const details = landmark.details;
     if (details) {
         const validStatuses = ['active', 'under_renovation', 'closed', 'planned'];
@@ -111,13 +103,11 @@ export const validateExtendedLandmarkData = (landmark) => {
 };
 
 export const validateVisitingHours = (hours) => {
-    // Format: "HH:MM-HH:MM" lub "closed"
     if (hours === 'closed') return true;
     return /^([0-1][0-9]|2[0-3]):[0-5][0-9]-([0-1][0-9]|2[0-3]):[0-5][0-9]$/.test(hours);
 };
 
 export const validatePriceRange = (range) => {
-    // Format: "free" lub "X-Y" gdzie X,Y to liczby
     if (range === 'free') return true;
     return /^\d+-\d+$/.test(range);
 };

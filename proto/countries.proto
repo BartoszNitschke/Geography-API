@@ -2,9 +2,9 @@ syntax = "proto3";
 
 package continents;
 
-import "proto/continents.proto";  // Importujemy definicje z continents.proto
+import "proto/continents.proto";  
 
-// Typy dla zabytków
+
 message Landmark {
     string name = 1;
     string type = 2;
@@ -17,7 +17,6 @@ message LandmarkInput {
     string description = 3;
 }
 
-// Typy dla krajów
 message Country {
     string name = 1;
     string capital = 2;
@@ -32,7 +31,6 @@ message CountryInput {
     repeated LandmarkInput landmarks = 4;
 }
 
-// Typy dla kontynentów
 message Continent {
     string name = 1;
     string code = 2;
@@ -48,7 +46,6 @@ message ContinentInput {
     string area = 4;
 }
 
-// Filtry
 message ContinentFilter {
     string code = 1;
 }
@@ -63,49 +60,38 @@ message LandmarkFilter {
     string name = 2;
 }
 
-// Odpowiedzi
 message DeleteResponse {
     bool success = 1;
     string message = 2;
     string code = 3;
 }
 
-// Serwis dla kontynentów
 service ContinentService {
-    // Zapytania
     rpc GetContinents(ContinentFilter) returns (stream Continent);
     rpc GetContinent(ContinentFilter) returns (Continent);
     
-    // Mutacje
     rpc UpdateContinent(ContinentInput) returns (Continent);
     rpc DeleteContinent(ContinentFilter) returns (DeleteResponse);
 }
 
-// Serwis dla krajów
 service CountryService {
-    // Zapytania
     rpc GetCountries(CountryFilter) returns (stream Country);
     rpc GetCountry(CountryFilter) returns (Country);
     
-    // Mutacje
     rpc CreateCountry(CountryInput) returns (Country);
     rpc UpdateCountry(CountryInput) returns (Country);
     rpc DeleteCountry(CountryFilter) returns (DeleteResponse);
 }
 
-// Serwis dla zabytków
 service LandmarkService {
-    // Zapytania
     rpc GetLandmarks(LandmarkFilter) returns (stream Landmark);
     rpc GetLandmark(LandmarkFilter) returns (Landmark);
     
-    // Mutacje
     rpc AddLandmark(LandmarkInput) returns (Landmark);
     rpc UpdateLandmark(LandmarkInput) returns (Landmark);
     rpc DeleteLandmark(LandmarkFilter) returns (DeleteResponse);
 }
 
-// Rozszerzenia dla krajów
 message CountryDetails {
     string population = 1;
     string area = 2;
@@ -114,10 +100,9 @@ message CountryDetails {
     string timezone = 5;
 }
 
-// Rozszerzone typy dla krajów
 message ExtendedCountry {
-    Country base = 1;           // Podstawowe informacje z continents.proto
-    CountryDetails details = 2; // Dodatkowe szczegóły
+    Country base = 1;           
+    CountryDetails details = 2; 
 }
 
 message ExtendedCountryInput {
@@ -125,7 +110,6 @@ message ExtendedCountryInput {
     CountryDetails details = 2;
 }
 
-// Filtry specyficzne dla krajów
 message ExtendedCountryFilter {
     CountryFilter base = 1;     // Podstawowy filtr z continents.proto
     string language = 2;        // Filtrowanie po języku
@@ -133,22 +117,17 @@ message ExtendedCountryFilter {
     string timezone = 4;        // Filtrowanie po strefie czasowej
 }
 
-// Serwis dla rozszerzonych informacji o krajach
 service ExtendedCountryService {
-    // Zapytania
     rpc GetExtendedCountries(ExtendedCountryFilter) returns (stream ExtendedCountry);
     rpc GetExtendedCountry(CountryFilter) returns (ExtendedCountry);
     
-    // Mutacje
     rpc CreateExtendedCountry(ExtendedCountryInput) returns (ExtendedCountry);
     rpc UpdateExtendedCountry(ExtendedCountryInput) returns (ExtendedCountry);
     rpc DeleteExtendedCountry(CountryFilter) returns (DeleteResponse);
     
-    // Statystyki
     rpc GetCountryStats(CountryFilter) returns (CountryStats);
 }
 
-// Statystyki dla kraju
 message CountryStats {
     string total_landmarks = 1;
     repeated string landmark_types = 2;

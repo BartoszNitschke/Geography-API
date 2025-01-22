@@ -16,12 +16,10 @@ const landmarkProto = grpc.loadPackageDefinition(landmarkPackageDefinition);
 
 const server = new grpc.Server();
 
-// Dodawanie podstawowych serwisów
 server.addService(continentProto.continents.ContinentService.service, continentResolvers);
 server.addService(countryProto.continents.CountryService.service, countryResolvers);
 server.addService(landmarkProto.continents.LandmarkService.service, landmarkResolvers);
 
-// Dodawanie rozszerzonych serwisów
 server.addService(countryProto.continents.ExtendedCountryService.service, extendedCountryResolvers);
 server.addService(landmarkProto.continents.ExtendedLandmarkService.service, extendedLandmarkResolvers);
 
