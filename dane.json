@@ -1,0 +1,1219 @@
+[
+  {
+    "continent": {
+      "name": "Asia",
+      "code": "AS",
+      "countries": [
+        {
+          "name": "Afghanistan",
+          "capital": "Kabul",
+          "code": "AF",
+          "landmarks": [
+            {
+              "name": "Bamiyan Buddhas",
+              "type": "Historical",
+              "description": "Ancient statues of Buddha."
+            }
+          ]
+        },
+        {
+          "name": "Armenia",
+          "capital": "Yerevan",
+          "code": "AM",
+          "landmarks": [
+            {
+              "name": "Garni Temple",
+              "type": "Historical",
+              "description": "Classical Hellenistic temple."
+            }
+          ]
+        },
+        {
+          "name": "Azerbaijan",
+          "capital": "Baku",
+          "code": "AZ",
+          "landmarks": [
+            {
+              "name": "Maiden Tower",
+              "type": "Historical",
+              "description": "UNESCO World Heritage site."
+            }
+          ]
+        },
+        {
+          "name": "Bahrain",
+          "capital": "Manama",
+          "code": "BH",
+          "landmarks": [
+            {
+              "name": "Bahrain Fort",
+              "type": "Historical",
+              "description": "Ancient archaeological site."
+            }
+          ]
+        },
+        {
+          "name": "Bangladesh",
+          "capital": "Dhaka",
+          "code": "BD",
+          "landmarks": [
+            {
+              "name": "Lalbagh Fort",
+              "type": "Historical",
+              "description": "Mughal-era fort."
+            }
+          ]
+        },
+        {
+          "name": "Bhutan",
+          "capital": "Thimphu",
+          "code": "BT",
+          "landmarks": [
+            {
+              "name": "Tiger's Nest Monastery",
+              "type": "Religious",
+              "description": "Iconic Buddhist monastery."
+            }
+          ]
+        },
+        {
+          "name": "Brunei",
+          "capital": "Bandar Seri Begawan",
+          "code": "BN",
+          "landmarks": [
+            {
+              "name": "Omar Ali Saifuddien Mosque",
+              "type": "Religious",
+              "description": "Famous mosque."
+            }
+          ]
+        },
+        {
+          "name": "Philippines",
+          "capital": "Manila",
+          "code": "PH",
+          "landmarks": [
+            {
+              "name": "Rice Terraces of the Philippines",
+              "type": "Natural",
+              "description": "World Heritage site."
+            }
+          ]
+        },
+        {
+          "name": "Georgia",
+          "capital": "Tbilisi",
+          "code": "GE",
+          "landmarks": [
+            {
+              "name": "Narikala Fortress",
+              "type": "Historical",
+              "description": "Ancient fortress."
+            }
+          ]
+        },
+        {
+          "name": "Hong Kong",
+          "capital": "Hong Kong",
+          "code": "HK",
+          "landmarks": [
+            {
+              "name": "Victoria Peak",
+              "type": "Natural",
+              "description": "Panoramic views of the city."
+            }
+          ]
+        },
+        {
+          "name": "India",
+          "capital": "New Delhi",
+          "code": "IN",
+          "landmarks": [
+            {
+              "name": "Taj Mahal",
+              "type": "Historical",
+              "description": "Iconic marble mausoleum."
+            }
+          ]
+        },
+        {
+          "name": "Indonesia",
+          "capital": "Jakarta",
+          "code": "ID",
+          "landmarks": [
+            {
+              "name": "Borobudur",
+              "type": "Historical",
+              "description": "Largest Buddhist temple."
+            }
+          ]
+        },
+        {
+          "name": "Iraq",
+          "capital": "Baghdad",
+          "code": "IQ",
+          "landmarks": [
+            {
+              "name": "Ziggurat of Ur",
+              "type": "Historical",
+              "description": "Ancient Sumerian structure."
+            }
+          ]
+        },
+        {
+          "name": "Iran",
+          "capital": "Tehran",
+          "code": "IR",
+          "landmarks": [
+            {
+              "name": "Persepolis",
+              "type": "Historical",
+              "description": "Ancient ceremonial capital."
+            }
+          ]
+        },
+        {
+          "name": "Japan",
+          "capital": "Tokyo",
+          "code": "JP",
+          "landmarks": [
+            {
+              "name": "Mount Fuji",
+              "type": "Natural",
+              "description": "Iconic volcanic mountain."
+            }
+          ]
+        },
+        {
+          "name": "Yemen",
+          "capital": "Sana'a",
+          "code": "YE",
+          "landmarks": [
+            {
+              "name": "Old City of Sana'a",
+              "type": "Historical",
+              "description": "UNESCO World Heritage."
+            }
+          ]
+        },
+        {
+          "name": "Jordan",
+          "capital": "Amman",
+          "code": "JO",
+          "landmarks": [
+            {
+              "name": "Petra",
+              "type": "Historical",
+              "description": "Rock-cut architecture site."
+            }
+          ]
+        },
+        {
+          "name": "Cambodia",
+          "capital": "Phnom Penh",
+          "code": "KH",
+          "landmarks": [
+            {
+              "name": "Angkor Wat",
+              "type": "Historical",
+              "description": "Largest religious monument."
+            }
+          ]
+        },
+        {
+          "name": "Qatar",
+          "capital": "Doha",
+          "code": "QA",
+          "landmarks": [
+            {
+              "name": "Museum of Islamic Art",
+              "type": "Cultural",
+              "description": "Islamic art museum."
+            }
+          ]
+        },
+        {
+          "name": "Kazakhstan",
+          "capital": "Astana",
+          "code": "KZ",
+          "landmarks": [
+            {
+              "name": "Bayterek Tower",
+              "type": "Architectural",
+              "description": "Symbol of Astana."
+            }
+          ]
+        },
+        {
+          "name": "Kyrgyzstan",
+          "capital": "Bishkek",
+          "code": "KG",
+          "landmarks": [
+            {
+              "name": "Ala Archa National Park",
+              "type": "Natural",
+              "description": "Mountain park."
+            }
+          ]
+        },
+        {
+          "name": "Kuwait",
+          "capital": "Kuwait City",
+          "code": "KW",
+          "landmarks": [
+            {
+              "name": "Kuwait Towers",
+              "type": "Architectural",
+              "description": "Iconic towers."
+            }
+          ]
+        },
+        {
+          "name": "Laos",
+          "capital": "Vientiane",
+          "code": "LA",
+          "landmarks": [
+            {
+              "name": "Pha That Luang",
+              "type": "Religious",
+              "description": "Great Stupa."
+            }
+          ]
+        },
+        {
+          "name": "Lebanon",
+          "capital": "Beirut",
+          "code": "LB",
+          "landmarks": [
+            {
+              "name": "Baalbek",
+              "type": "Historical",
+              "description": "Roman ruins."
+            }
+          ]
+        },
+        {
+          "name": "Malaysia",
+          "capital": "Kuala Lumpur",
+          "code": "MY",
+          "landmarks": [
+            {
+              "name": "Petronas Towers",
+              "type": "Architectural",
+              "description": "Twin skyscrapers."
+            }
+          ]
+        },
+        {
+          "name": "Maldives",
+          "capital": "Malé",
+          "code": "MV",
+          "landmarks": [
+            {
+              "name": "Hulhumale",
+              "type": "Natural",
+              "description": "Island."
+            }
+          ]
+        },
+        {
+          "name": "Mongolia",
+          "capital": "Ulaanbaatar",
+          "code": "MN",
+          "landmarks": [
+            {
+              "name": "Gobi Desert",
+              "type": "Natural",
+              "description": "Vast desert."
+            }
+          ]
+        },
+        {
+          "name": "Myanmar",
+          "capital": "Naypyidaw",
+          "code": "MM",
+          "landmarks": [
+            {
+              "name": "Bagan",
+              "type": "Historical",
+              "description": "Ancient city."
+            }
+          ]
+        },
+        {
+          "name": "Nepal",
+          "capital": "Kathmandu",
+          "code": "NP",
+          "landmarks": [
+            {
+              "name": "Mount Everest",
+              "type": "Natural",
+              "description": "Highest mountain."
+            }
+          ]
+        },
+        {
+          "name": "Oman",
+          "capital": "Muscat",
+          "code": "OM",
+          "landmarks": [
+            {
+              "name": "Sultan Qaboos Grand Mosque",
+              "type": "Religious",
+              "description": "Grand mosque."
+            }
+          ]
+        },
+        {
+          "name": "Pakistan",
+          "capital": "Islamabad",
+          "code": "PK",
+          "landmarks": [
+            {
+              "name": "Badshahi Mosque",
+              "type": "Religious",
+              "description": "Iconic mosque."
+            }
+          ]
+        },
+        {
+          "name": "Palestine",
+          "capital": "Ramallah",
+          "code": "PS",
+          "landmarks": [
+            {
+              "name": "Church of Nativity",
+              "type": "Religious",
+              "description": "Birthplace of Jesus."
+            }
+          ]
+        },
+        {
+          "name": "South Korea",
+          "capital": "Seoul",
+          "code": "KR",
+          "landmarks": [
+            {
+              "name": "Gyeongbokgung Palace",
+              "type": "Historical",
+              "description": "Historic palace."
+            }
+          ]
+        },
+        {
+          "name": "Russia",
+          "capital": "Moscow",
+          "code": "RU",
+          "landmarks": [
+            {
+              "name": "Red Square",
+              "type": "Historical",
+              "description": "Cultural center."
+            }
+          ]
+        },
+        {
+          "name": "Sri Lanka",
+          "capital": "Colombo",
+          "code": "LK",
+          "landmarks": [
+            {
+              "name": "Sigiriya",
+              "type": "Historical",
+              "description": "Ancient fortress."
+            }
+          ]
+        },
+        {
+          "name": "Singapore",
+          "capital": "Singapore",
+          "code": "SG",
+          "landmarks": [
+            {
+              "name": "Marina Bay Sands",
+              "type": "Architectural",
+              "description": "Iconic hotel."
+            }
+          ]
+        },
+        {
+          "name": "Syria",
+          "capital": "Damascus",
+          "code": "SY",
+          "landmarks": [
+            {
+              "name": "Ancient City of Damascus",
+              "type": "Historical",
+              "description": "Oldest capital city."
+            }
+          ]
+        },
+        {
+          "name": "Tajikistan",
+          "capital": "Dushanbe",
+          "code": "TJ",
+          "landmarks": [
+            {
+              "name": "Iskanderkul Lake",
+              "type": "Natural",
+              "description": "Mountain lake."
+            }
+          ]
+        },
+        {
+          "name": "Thailand",
+          "capital": "Bangkok",
+          "code": "TH",
+          "landmarks": [
+            {
+              "name": "Grand Palace",
+              "type": "Architectural",
+              "description": "Royal residence."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "continent": {
+      "name": "Europa",
+      "code": "EU",
+      "countries": [
+        {
+          "name": "Albania",
+          "capital": "Tirana",
+          "code": "AL",
+          "landmarks": [
+            {
+              "name": "Berat Castle",
+              "type": "Historical",
+              "description": "A historical fortress."
+            },
+            {
+              "name": "Albania National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Albania."
+            }
+          ]
+        },
+        {
+          "name": "Andorra",
+          "capital": "Andorra la Vella",
+          "code": "AD",
+          "landmarks": [
+            {
+              "name": "Casa de la Vall",
+              "type": "Historical",
+              "description": "A historic house."
+            },
+            {
+              "name": "Andorra National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Andorra."
+            }
+          ]
+        },
+        {
+          "name": "Austria",
+          "capital": "Vienna",
+          "code": "AT",
+          "landmarks": [
+            {
+              "name": "Schönbrunn Palace",
+              "type": "Architectural",
+              "description": "Former imperial summer residence."
+            },
+            {
+              "name": "Austria National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Austria."
+            }
+          ]
+        },
+        {
+          "name": "Belgium",
+          "capital": "Brussels",
+          "code": "BE",
+          "landmarks": [
+            {
+              "name": "Grand Place",
+              "type": "Cultural",
+              "description": "Historic square."
+            },
+            {
+              "name": "Belgium National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Belgium."
+            }
+          ]
+        },
+        {
+          "name": "Belarus",
+          "capital": "Minsk",
+          "code": "BY",
+          "landmarks": [
+            {
+              "name": "Brest Fortress",
+              "type": "Historical",
+              "description": "WWII fortress memorial."
+            },
+            {
+              "name": "Belarus National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Belarus."
+            }
+          ]
+        },
+        {
+          "name": "Bosnia and Herzegovina",
+          "capital": "Sarajevo",
+          "code": "BA",
+          "landmarks": [
+            {
+              "name": "Stari Most",
+              "type": "Historical",
+              "description": "Historic bridge in Mostar."
+            },
+            {
+              "name": "Bosnia and Herzegovina National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Bosnia and Herzegovina."
+            }
+          ]
+        },
+        {
+          "name": "Bulgaria",
+          "capital": "Sofia",
+          "code": "BG",
+          "landmarks": [
+            {
+              "name": "Alexander Nevsky Cathedral",
+              "type": "Architectural",
+              "description": "One of the largest Eastern Orthodox cathedrals."
+            },
+            {
+              "name": "Bulgaria National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Bulgaria."
+            }
+          ]
+        },
+        {
+          "name": "Croatia",
+          "capital": "Zagreb",
+          "code": "HR",
+          "landmarks": [
+            {
+              "name": "Plitvice Lakes",
+              "type": "Natural",
+              "description": "National park with lakes and waterfalls."
+            },
+            {
+              "name": "Croatia National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Croatia."
+            }
+          ]
+        },
+        {
+          "name": "Montenegro",
+          "capital": "Podgorica",
+          "code": "ME",
+          "landmarks": [
+            {
+              "name": "Durmitor National Park",
+              "type": "Natural",
+              "description": "Mountain and glacial lakes park."
+            },
+            {
+              "name": "Montenegro National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Montenegro."
+            }
+          ]
+        },
+        {
+          "name": "Czechia",
+          "capital": "Prague",
+          "code": "CZ",
+          "landmarks": [
+            {
+              "name": "Charles Bridge",
+              "type": "Historical",
+              "description": "Historic bridge across the Vltava river."
+            },
+            {
+              "name": "Czechia National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Czechia."
+            }
+          ]
+        },
+        {
+          "name": "Denmark",
+          "capital": "Copenhagen",
+          "code": "DK",
+          "landmarks": [
+            {
+              "name": "Nyhavn",
+              "type": "Historical",
+              "description": "Historic harbor district."
+            },
+            {
+              "name": "Denmark National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Denmark."
+            }
+          ]
+        },
+        {
+          "name": "Estonia",
+          "capital": "Tallinn",
+          "code": "EE",
+          "landmarks": [
+            {
+              "name": "Tallinn Old Town",
+              "type": "Historical",
+              "description": "Medieval old town."
+            },
+            {
+              "name": "Estonia National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Estonia."
+            }
+          ]
+        },
+        {
+          "name": "Finland",
+          "capital": "Helsinki",
+          "code": "FI",
+          "landmarks": [
+            {
+              "name": "Suomenlinna",
+              "type": "Historical",
+              "description": "Sea fortress."
+            },
+            {
+              "name": "Finland National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Finland."
+            }
+          ]
+        },
+        {
+          "name": "France",
+          "capital": "Paris",
+          "code": "FR",
+          "landmarks": [
+            {
+              "name": "Eiffel Tower",
+              "type": "Architectural",
+              "description": "Iron tower built in 1889."
+            },
+            {
+              "name": "France National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of France."
+            }
+          ]
+        },
+        {
+          "name": "Greece",
+          "capital": "Athens",
+          "code": "GR",
+          "landmarks": [
+            {
+              "name": "Acropolis",
+              "type": "Historical",
+              "description": "Ancient citadel."
+            },
+            {
+              "name": "Greece National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Greece."
+            }
+          ]
+        },
+        {
+          "name": "Spain",
+          "capital": "Madrid",
+          "code": "ES",
+          "landmarks": [
+            {
+              "name": "Sagrada Familia",
+              "type": "Architectural",
+              "description": "Unfinished basilica."
+            },
+            {
+              "name": "Spain National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Spain."
+            }
+          ]
+        },
+        {
+          "name": "Netherlands",
+          "capital": "Amsterdam",
+          "code": "NL",
+          "landmarks": [
+            {
+              "name": "Anne Frank House",
+              "type": "Historical",
+              "description": "Museum."
+            },
+            {
+              "name": "Netherlands National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Netherlands."
+            }
+          ]
+        },
+        {
+          "name": "Ireland",
+          "capital": "Dublin",
+          "code": "IE",
+          "landmarks": [
+            {
+              "name": "Cliffs of Moher",
+              "type": "Natural",
+              "description": "Coastal cliffs."
+            },
+            {
+              "name": "Ireland National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Ireland."
+            }
+          ]
+        },
+        {
+          "name": "Iceland",
+          "capital": "Reykjavik",
+          "code": "IS",
+          "landmarks": [
+            {
+              "name": "Blue Lagoon",
+              "type": "Natural",
+              "description": "Geothermal spa."
+            },
+            {
+              "name": "Iceland National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Iceland."
+            }
+          ]
+        },
+        {
+          "name": "Kosovo",
+          "capital": "Pristina",
+          "code": "XK",
+          "landmarks": [
+            {
+              "name": "Germia Park",
+              "type": "Natural",
+              "description": "Public park."
+            },
+            {
+              "name": "Kosovo National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Kosovo."
+            }
+          ]
+        },
+        {
+          "name": "Liechtenstein",
+          "capital": "Vaduz",
+          "code": "LI",
+          "landmarks": [
+            {
+              "name": "Vaduz Castle",
+              "type": "Historical",
+              "description": "Residence of the prince."
+            },
+            {
+              "name": "Liechtenstein National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Liechtenstein."
+            }
+          ]
+        },
+        {
+          "name": "Lithuania",
+          "capital": "Vilnius",
+          "code": "LT",
+          "landmarks": [
+            {
+              "name": "Trakai Island Castle",
+              "type": "Historical",
+              "description": "Island castle."
+            },
+            {
+              "name": "Lithuania National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Lithuania."
+            }
+          ]
+        },
+        {
+          "name": "Latvia",
+          "capital": "Riga",
+          "code": "LV",
+          "landmarks": [
+            {
+              "name": "House of the Blackheads",
+              "type": "Architectural",
+              "description": "Historic building."
+            },
+            {
+              "name": "Latvia National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Latvia."
+            }
+          ]
+        },
+        {
+          "name": "Luxembourg",
+          "capital": "Luxembourg City",
+          "code": "LU",
+          "landmarks": [
+            {
+              "name": "Vianden Castle",
+              "type": "Historical",
+              "description": "Medieval castle."
+            },
+            {
+              "name": "Luxembourg National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Luxembourg."
+            }
+          ]
+        },
+        {
+          "name": "North Macedonia",
+          "capital": "Skopje",
+          "code": "MK",
+          "landmarks": [
+            {
+              "name": "Stone Bridge",
+              "type": "Historical",
+              "description": "Symbol of Skopje."
+            },
+            {
+              "name": "North Macedonia National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of North Macedonia."
+            }
+          ]
+        },
+        {
+          "name": "Malta",
+          "capital": "Valletta",
+          "code": "MT",
+          "landmarks": [
+            {
+              "name": "St. John's Co-Cathedral",
+              "type": "Architectural",
+              "description": "Baroque cathedral."
+            },
+            {
+              "name": "Malta National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Malta."
+            }
+          ]
+        },
+        {
+          "name": "Moldova",
+          "capital": "Chișinău",
+          "code": "MD",
+          "landmarks": [
+            {
+              "name": "Orheiul Vechi",
+              "type": "Historical",
+              "description": "Archaeological complex."
+            },
+            {
+              "name": "Moldova National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Moldova."
+            }
+          ]
+        },
+        {
+          "name": "Monaco",
+          "capital": "Monaco",
+          "code": "MC",
+          "landmarks": [
+            {
+              "name": "Monte Carlo Casino",
+              "type": "Entertainment",
+              "description": "World-famous casino."
+            },
+            {
+              "name": "Monaco National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Monaco."
+            }
+          ]
+        },
+        {
+          "name": "Norway",
+          "capital": "Oslo",
+          "code": "NO",
+          "landmarks": [
+            {
+              "name": "Frogner Park",
+              "type": "Art",
+              "description": "Sculpture park."
+            },
+            {
+              "name": "Norway National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Norway."
+            }
+          ]
+        },
+        {
+          "name": "Poland",
+          "capital": "Warsaw",
+          "code": "PL",
+          "landmarks": [
+            {
+              "name": "Royal Castle",
+              "type": "Historical",
+              "description": "Symbol of heritage."
+            },
+            {
+              "name": "Poland National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Poland."
+            }
+          ]
+        },
+        {
+          "name": "Portugal",
+          "capital": "Lisbon",
+          "code": "PT",
+          "landmarks": [
+            {
+              "name": "Belem Tower",
+              "type": "Historical",
+              "description": "Age of Discoveries landmark."
+            },
+            {
+              "name": "Portugal National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Portugal."
+            }
+          ]
+        },
+        {
+          "name": "Romania",
+          "capital": "Bucharest",
+          "code": "RO",
+          "landmarks": [
+            {
+              "name": "Bran Castle",
+              "type": "Historical",
+              "description": "Dracula's Castle."
+            },
+            {
+              "name": "Romania National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Romania."
+            }
+          ]
+        },
+        {
+          "name": "San Marino",
+          "capital": "San Marino",
+          "code": "SM",
+          "landmarks": [
+            {
+              "name": "Guaita",
+              "type": "Historical",
+              "description": "Oldest fortress."
+            },
+            {
+              "name": "San Marino National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of San Marino."
+            }
+          ]
+        },
+        {
+          "name": "Serbia",
+          "capital": "Belgrade",
+          "code": "RS",
+          "landmarks": [
+            {
+              "name": "Kalemegdan",
+              "type": "Historical",
+              "description": "Fortress."
+            },
+            {
+              "name": "Serbia National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Serbia."
+            }
+          ]
+        },
+        {
+          "name": "Slovakia",
+          "capital": "Bratislava",
+          "code": "SK",
+          "landmarks": [
+            {
+              "name": "Bratislava Castle",
+              "type": "Historical",
+              "description": "Castle overlooking the Danube."
+            },
+            {
+              "name": "Slovakia National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Slovakia."
+            }
+          ]
+        },
+        {
+          "name": "Slovenia",
+          "capital": "Ljubljana",
+          "code": "SI",
+          "landmarks": [
+            {
+              "name": "Lake Bled",
+              "type": "Natural",
+              "description": "Alpine lake."
+            },
+            {
+              "name": "Slovenia National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Slovenia."
+            }
+          ]
+        },
+        {
+          "name": "Switzerland",
+          "capital": "Bern",
+          "code": "CH",
+          "landmarks": [
+            {
+              "name": "Matterhorn",
+              "type": "Natural",
+              "description": "Alpine mountain."
+            },
+            {
+              "name": "Switzerland National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Switzerland."
+            }
+          ]
+        },
+        {
+          "name": "Sweden",
+          "capital": "Stockholm",
+          "code": "SE",
+          "landmarks": [
+            {
+              "name": "Vasa Museum",
+              "type": "Cultural",
+              "description": "17th-century ship."
+            },
+            {
+              "name": "Sweden National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Sweden."
+            }
+          ]
+        },
+        {
+          "name": "Ukraine",
+          "capital": "Kyiv",
+          "code": "UA",
+          "landmarks": [
+            {
+              "name": "St. Sophia Cathedral",
+              "type": "Historical",
+              "description": "UNESCO World Heritage."
+            },
+            {
+              "name": "Ukraine National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Ukraine."
+            }
+          ]
+        },
+        {
+          "name": "Vatican",
+          "capital": "Vatican City",
+          "code": "VA",
+          "landmarks": [
+            {
+              "name": "St. Peter's Basilica",
+              "type": "Religious",
+              "description": "Catholic church."
+            },
+            {
+              "name": "Vatican National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Vatican."
+            }
+          ]
+        },
+        {
+          "name": "United Kingdom",
+          "capital": "London",
+          "code": "GB",
+          "landmarks": [
+            {
+              "name": "Big Ben",
+              "type": "Architectural",
+              "description": "Iconic clock tower."
+            },
+            {
+              "name": "United Kingdom National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of United Kingdom."
+            }
+          ]
+        },
+        {
+          "name": "Hungary",
+          "capital": "Budapest",
+          "code": "HU",
+          "landmarks": [
+            {
+              "name": "Buda Castle",
+              "type": "Historical",
+              "description": "Castle complex."
+            },
+            {
+              "name": "Hungary National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Hungary."
+            }
+          ]
+        },
+        {
+          "name": "Italy",
+          "capital": "Rome",
+          "code": "IT",
+          "landmarks": [
+            {
+              "name": "Colosseum",
+              "type": "Historical",
+              "description": "Ancient amphitheater."
+            },
+            {
+              "name": "Italy National Museum",
+              "type": "Cultural",
+              "description": "A museum dedicated to the cultural heritage of Italy."
+            }
+          ]
+        }
+      ],
+      "population": "746419440",
+      "area": "10180000"
+    }
+  }
+]

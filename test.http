@@ -1,0 +1,99 @@
+@baseUrl = http://localhost:3000/api
+
+### Pobierz informacje o kontynencie
+GET {{baseUrl}}/continent
+Content-Type: application/json
+
+### Pobierz listę krajów w kontynencie
+GET {{baseUrl}}/continent/countries
+Content-Type: application/json
+
+### Pobierz szczegóły konkretnego kraju w kontynencie
+GET {{baseUrl}}/continent/countries/PL
+Content-Type: application/json
+
+### Pobierz zabytki konkretnego kraju w kontynencie
+GET {{baseUrl}}/continent/countries/PL/landmarks
+Content-Type: application/json
+
+### Aktualizuj kontynent
+PUT {{baseUrl}}/continent/EU
+Content-Type: application/json
+
+{
+    "name": "Europa",
+    "population": "746419440",
+    "area": "10180000"
+}
+
+### Usuń kontynent
+DELETE {{baseUrl}}/continent/EU
+Content-Type: application/json
+
+### Pobierz wszystkie kraje
+GET {{baseUrl}}/countries
+Content-Type: application/json
+
+### Pobierz szczegóły kraju po kodzie
+GET {{baseUrl}}/countries/PL
+Content-Type: application/json
+
+### Dodaj nowy kraj
+POST {{baseUrl}}/countries
+Content-Type: application/json
+
+{
+    "name": "Polska",
+    "code": "PL",
+    "capital": "Warszawa",
+    "population": "37846611",
+    "area": "312696",
+    "landmarks": []
+}
+
+### Aktualizuj kraj
+PUT {{baseUrl}}/countries/PL
+Content-Type: application/json
+
+{
+    "name": "Polska",
+    "capital": "Warszawa",
+    "population": "37950000",
+    "area": "312696"
+}
+
+### Usuń kraj
+DELETE {{baseUrl}}/countries/PL
+Content-Type: application/json
+
+### Pobierz wszystkie zabytki
+GET {{baseUrl}}/landmarks
+Content-Type: application/json
+
+### Pobierz zabytki dla konkretnego kraju
+GET {{baseUrl}}/landmarks/country/PL
+Content-Type: application/json
+
+### Dodaj nowy zabytek do kraju
+POST {{baseUrl}}/landmarks/country/PL
+Content-Type: application/json
+
+{
+    "name": "Wawel",
+    "type": "Zamek",
+    "description": "Zamek królewski w Krakowie"
+}
+
+### Aktualizuj zabytek
+PUT {{baseUrl}}/landmarks/country/PL/Wawel
+Content-Type: application/json
+
+{
+    "type": "Zamek królewski",
+    "description": "Zamek królewski na wzgórzu wawelskim w Krakowie"
+}
+
+### Usuń zabytek
+DELETE {{baseUrl}}/landmarks/country/PL/Wawel
+Content-Type: application/json
+
