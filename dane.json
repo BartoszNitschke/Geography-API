@@ -472,7 +472,9 @@
             }
           ]
         }
-      ]
+      ],
+      "population": "string",
+      "area": "string"
     }
   },
   {
@@ -987,6 +989,11 @@
               "name": "Poland National Museum",
               "type": "Cultural",
               "description": "A museum dedicated to the cultural heritage of Poland."
+            },
+            {
+              "name": "Tatry",
+              "type": "asdasdasd",
+              "description": "asdasdasd"
             }
           ]
         },
@@ -1214,6 +1221,28 @@
       ],
       "population": "746419440",
       "area": "10180000"
+    }
+  },
+  {
+    "continent": {
+      "code": "SA",
+      "name": "South Ammmerica",
+      "population": "string",
+      "area": "string",
+      "countries": [
+        {
+          "name": "Argentina",
+          "code": "AR",
+          "capital": "Buenos Aires",
+          "landmarks": [
+            {
+              "name": "Perito Moreno",
+              "type": "Nature",
+              "description": "Glacier in Patagonia"
+            }
+          ]
+        }
+      ]
     }
   }
 ]

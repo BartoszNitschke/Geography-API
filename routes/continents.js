@@ -26,6 +26,194 @@ const saveContinentsData = (data) => {
     });
 };
 
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Continent:
+ *       type: object
+ *       required:
+ *         - name
+ *         - code
+ *       properties:
+ *         name:
+ *           type: string
+ *           description: Nazwa kontynentu
+ *         code:
+ *           type: string
+ *           description: Kod kontynentu (2 litery)
+ *         population:
+ *           type: string
+ *           description: Populacja kontynentu
+ *         area:
+ *           type: string
+ *           description: Powierzchnia kontynentu
+ *         countries:
+ *           type: array
+ *           items:
+ *             $ref: '#/components/schemas/Country'
+ */
+
+/**
+ * @swagger
+ * /continent:
+ *   get:
+ *     summary: Pobierz wszystkie kontynenty
+ *     tags: [Continents]
+ *     responses:
+ *       200:
+ *         description: Lista kontynentów
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 continents:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/Continent'
+ *       500:
+ *         description: Błąd serwera
+ *   post:
+ *     summary: Dodaj nowy kontynent
+ *     tags: [Continents]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - name
+ *               - code
+ *             properties:
+ *               name:
+ *                 type: string
+ *               code:
+ *                 type: string
+ *               population:
+ *                 type: string
+ *               area:
+ *                 type: string
+ *               countries:
+ *                 type: array
+ *                 items:
+ *                   $ref: '#/components/schemas/Country'
+ *     responses:
+ *       201:
+ *         description: Kontynent został utworzony
+ *       400:
+ *         description: Nieprawidłowe dane
+ *       409:
+ *         description: Kontynent o podanym kodzie już istnieje
+ *       500:
+ *         description: Błąd serwera
+ * 
+ * /continent/{code}:
+ *   get:
+ *     summary: Pobierz kontynent po kodzie
+ *     tags: [Continents]
+ *     parameters:
+ *       - in: path
+ *         name: code
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Kod kontynentu (2 litery)
+ *     responses:
+ *       200:
+ *         description: Szczegóły kontynentu
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Continent'
+ *       404:
+ *         description: Kontynent nie został znaleziony
+ *       500:
+ *         description: Błąd serwera
+ *   put:
+ *     summary: Aktualizuj kontynent
+ *     tags: [Continents]
+ *     parameters:
+ *       - in: path
+ *         name: code
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Kod kontynentu (2 litery)
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - name
+ *             properties:
+ *               name:
+ *                 type: string
+ *               population:
+ *                 type: string
+ *               area:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Kontynent zaktualizowany
+ *       400:
+ *         description: Nieprawidłowe dane
+ *       404:
+ *         description: Kontynent nie został znaleziony
+ *       500:
+ *         description: Błąd serwera
+ *   patch:
+ *     summary: Częściowo aktualizuj kontynent
+ *     tags: [Continents]
+ *     parameters:
+ *       - in: path
+ *         name: code
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Kod kontynentu (2 litery)
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               population:
+ *                 type: string
+ *               area:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Kontynent zaktualizowany częściowo
+ *       404:
+ *         description: Kontynent nie został znaleziony
+ *       500:
+ *         description: Błąd serwera
+ *   delete:
+ *     summary: Usuń kontynent
+ *     tags: [Continents]
+ *     parameters:
+ *       - in: path
+ *         name: code
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Kod kontynentu (2 litery)
+ *     responses:
+ *       200:
+ *         description: Kontynent usunięty
+ *       404:
+ *         description: Kontynent nie został znaleziony
+ *       500:
+ *         description: Błąd serwera
+ */
+
 router.get('/continent', async (req, res) => {
     res.setHeader('Cache-Control', 'no-store');
     res.setHeader('X-Powered-By', 'Express');
@@ -47,116 +235,35 @@ router.get('/continent', async (req, res) => {
     }
 });
 
-router.get('/continent/countries', async (req, res) => {
+router.get('/continent/:code', async (req, res) => {
     res.setHeader('Cache-Control', 'no-store');
     res.setHeader('X-Powered-By', 'Express');
     res.setHeader('Content-Type', 'application/json');
 
-    try {
-        const data = await loadContinentsData();
-        const allCountries = data.map(item => ({
-            continent: item.continent.name,
-            countries: item.continent.countries.map(country => ({
-                name: country.name,
-                code: country.code,
-                capital: country.capital
-            }))
-        }));
-
-        res.status(200).json({
-            continentCountries: allCountries,
-            _links: {
-                self: { href: 'http://localhost:3000/api/continent/countries', method: 'GET' }
-            }
-        });
-    } catch (error) {
-        console.error('Błąd przy wczytywaniu listy krajów:', error);
-        res.status(500).send('Błąd przy wczytywaniu listy krajów');
-    }
-});
-
-router.get('/continent/countries/:code', async (req, res) => {
-    res.setHeader('Cache-Control', 'no-store');
-    res.setHeader('X-Powered-By', 'Express');
-    res.setHeader('Content-Type', 'application/json');
-
-    const countryCode = req.params.code.toUpperCase();
+    const continentCode = req.params.code.toUpperCase();
 
     try {
         const data = await loadContinentsData();
-        let foundCountry = null;
-        let continentName = null;
+        const continent = data.find(item => item.continent.code === continentCode)?.continent;
 
-        for (const item of data) {
-            const country = item.continent.countries.find(c => c.code === countryCode);
-            if (country) {
-                foundCountry = country;
-                continentName = item.continent.name;
-                break;
-            }
-        }
-
-        if (!foundCountry) {
+        if (!continent) {
             return res.status(404).json({
-                error: 'Kraj o podanym kodzie nie został znaleziony'
+                error: 'Kontynent o podanym kodzie nie został znaleziony'
             });
         }
 
         res.status(200).json({
-            continent: continentName,
-            country: foundCountry,
+            continent,
             _links: {
-                self: { href: `http://localhost:3000/api/continent/countries/${countryCode}`, method: 'GET' },
-                landmarks: { href: `http://localhost:3000/api/continent/countries/${countryCode}/landmarks`, method: 'GET' },
-                allCountries: { href: 'http://localhost:3000/api/continent/countries', method: 'GET' }
+                self: { href: `http://localhost:3000/api/continent/${continentCode}`, method: 'GET' },
+                update: { href: `http://localhost:3000/api/continent/${continentCode}`, method: 'PUT' },
+                delete: { href: `http://localhost:3000/api/continent/${continentCode}`, method: 'DELETE' },
+                allContinents: { href: 'http://localhost:3000/api/continent', method: 'GET' }
             }
         });
     } catch (error) {
-        console.error('Błąd przy wczytywaniu danych kraju:', error);
-        res.status(500).send('Błąd przy wczytywaniu danych kraju');
-    }
-});
-
-router.get('/continent/countries/:code/landmarks', async (req, res) => {
-    res.setHeader('Cache-Control', 'no-store');
-    res.setHeader('X-Powered-By', 'Express');
-    res.setHeader('Content-Type', 'application/json');
-
-    const countryCode = req.params.code.toUpperCase();
-
-    try {
-        const data = await loadContinentsData();
-        let foundCountry = null;
-        let continentName = null;
-
-        for (const item of data) {
-            const country = item.continent.countries.find(c => c.code === countryCode);
-            if (country) {
-                foundCountry = country;
-                continentName = item.continent.name;
-                break;
-            }
-        }
-
-        if (!foundCountry) {
-            return res.status(404).json({
-                error: 'Kraj o podanym kodzie nie został znaleziony'
-            });
-        }
-
-        res.status(200).json({
-            continent: continentName,
-            country: foundCountry.name,
-            landmarks: foundCountry.landmarks,
-            _links: {
-                self: { href: `http://localhost:3000/api/continent/countries/${countryCode}/landmarks`, method: 'GET' },
-                country: { href: `http://localhost:3000/api/continent/countries/${countryCode}`, method: 'GET' },
-                allCountries: { href: 'http://localhost:3000/api/continent/countries', method: 'GET' }
-            }
-        });
-    } catch (error) {
-        console.error('Błąd przy wczytywaniu zabytków kraju:', error);
-        res.status(500).send('Błąd przy wczytywaniu zabytków kraju');
+        console.error('Błąd przy wczytywaniu danych kontynentu:', error);
+        res.status(500).send('Błąd przy wczytywaniu danych kontynentu');
     }
 });
 
@@ -164,16 +271,15 @@ router.put('/continent/:code', async (req, res) => {
     res.setHeader('Cache-Control', 'no-store');
     res.setHeader('X-Powered-By', 'Express');
     res.setHeader('Content-Type', 'application/json');
-    res.setHeader('X-Action', 'Continent Update');
-    res.setHeader('X-Request-ID', Date.now().toString());
+    res.setHeader('X-Action', 'Continent Full Update');
 
     const continentCode = req.params.code.toUpperCase();
     const updatedContinent = req.body;
 
-    if (!updatedContinent.name) {
+    if (!updatedContinent.name || !updatedContinent.population || !updatedContinent.area) {
         return res.status(400).json({
-            error: 'Brakujące wymagane pole name',
-            requiredFields: ['name']
+            error: 'Brakujące wymagane pola',
+            requiredFields: ['name', 'population', 'area']
         });
     }
 
@@ -186,16 +292,17 @@ router.put('/continent/:code', async (req, res) => {
         }
 
         data[continentIndex].continent = {
-            ...data[continentIndex].continent,
+            code: continentCode,
             name: updatedContinent.name,
             population: updatedContinent.population,
-            area: updatedContinent.area
+            area: updatedContinent.area,
+            countries: updatedContinent.countries || []
         };
 
         await saveContinentsData(data);
 
         res.status(200).json({
-            message: 'Kontynent został zaktualizowany pomyślnie',
+            message: 'Kontynent został całkowicie zaktualizowany',
             continent: data[continentIndex].continent,
             _links: {
                 self: { href: `http://localhost:3000/api/continent/${continentCode}`, method: 'GET' }
@@ -234,6 +341,112 @@ router.delete('/continent/:code', async (req, res) => {
     } catch (error) {
         console.error('Błąd podczas usuwania kontynentu:', error);
         res.status(500).send('Błąd przy usuwaniu kontynentu');
+    }
+});
+
+router.post('/continent', async (req, res) => {
+    res.setHeader('Cache-Control', 'no-store');
+    res.setHeader('X-Powered-By', 'Express');
+    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('X-Action', 'Continent Creation');
+
+    const newContinent = req.body;
+
+    if (!newContinent.name || !newContinent.code) {
+        return res.status(400).json({
+            error: 'Brakujące wymagane pola',
+            requiredFields: ['name', 'code']
+        });
+    }
+
+    try {
+        const data = await loadContinentsData();
+        const continentExists = data.some(item => 
+            item.continent.code === newContinent.code.toUpperCase()
+        );
+
+        if (continentExists) {
+            return res.status(409).json({
+                error: 'Kontynent o podanym kodzie już istnieje'
+            });
+        }
+
+        const continentToAdd = {
+            continent: {
+                name: newContinent.name,
+                code: newContinent.code.toUpperCase(),
+                population: newContinent.population || "0",
+                area: newContinent.area || "0",
+                countries: newContinent.countries || []
+            }
+        };
+
+        data.push(continentToAdd);
+        await saveContinentsData(data);
+
+        res.status(201).json({
+            message: 'Kontynent został dodany pomyślnie',
+            continent: continentToAdd.continent,
+            _links: {
+                self: { href: `http://localhost:3000/api/continent/${continentToAdd.continent.code}`, method: 'GET' },
+                allContinents: { href: 'http://localhost:3000/api/continent', method: 'GET' }
+            }
+        });
+    } catch (error) {
+        console.error('Błąd podczas dodawania kontynentu:', error);
+        res.status(500).send('Błąd przy dodawaniu kontynentu');
+    }
+});
+
+router.patch('/continent/:code', async (req, res) => {
+    res.setHeader('Cache-Control', 'no-store');
+    res.setHeader('X-Powered-By', 'Express');
+    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('X-Action', 'Continent Partial Update');
+
+    const continentCode = req.params.code.toUpperCase();
+    const updates = req.body;
+
+    if (Object.keys(updates).length === 0) {
+        return res.status(400).json({
+            error: 'Brak pól do aktualizacji'
+        });
+    }
+
+    try {
+        const data = await loadContinentsData();
+        const continentIndex = data.findIndex(item => item.continent.code === continentCode);
+
+        if (continentIndex === -1) {
+            return res.status(404).json({
+                error: 'Kontynent o podanym kodzie nie został znaleziony'
+            });
+        }
+
+        const currentContinent = data[continentIndex].continent;
+        
+        data[continentIndex].continent = {
+            ...currentContinent,
+            ...(updates.name && { name: updates.name }),
+            ...(updates.population && { population: updates.population }),
+            ...(updates.area && { area: updates.area }),
+            ...(updates.countries && { countries: updates.countries })
+        };
+
+        await saveContinentsData(data);
+
+        res.status(200).json({
+            message: 'Kontynent został częściowo zaktualizowany',
+            updatedFields: Object.keys(updates),
+            continent: data[continentIndex].continent,
+            _links: {
+                self: { href: `http://localhost:3000/api/continent/${continentCode}`, method: 'GET' },
+                fullUpdate: { href: `http://localhost:3000/api/continent/${continentCode}`, method: 'PUT' }
+            }
+        });
+    } catch (error) {
+        console.error('Błąd podczas częściowej aktualizacji kontynentu:', error);
+        res.status(500).send('Błąd przy częściowej aktualizacji kontynentu');
     }
 });
 
