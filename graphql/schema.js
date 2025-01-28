@@ -72,6 +72,34 @@ export const typeDefs = `#graphql
         description: String
     }
 
+    input PaginationInput {
+        page: Int = 1
+        pageSize: Int = 10
+    }
+
+    type PageInfo {
+        totalItems: Int!
+        totalPages: Int!
+        currentPage: Int!
+        hasNextPage: Boolean!
+        hasPreviousPage: Boolean!
+    }
+
+    type ContinentConnection {
+        items: [Continent!]!
+        pageInfo: PageInfo!
+    }
+
+    type CountryConnection {
+        items: [Country!]!
+        pageInfo: PageInfo!
+    }
+
+    type LandmarkConnection {
+        items: [Landmark!]!
+        pageInfo: PageInfo!
+    }
+
     type DeleteResponse {
         success: Boolean!
         message: String

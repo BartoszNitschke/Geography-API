@@ -8,6 +8,8 @@ export const applyFilters = (item, filters) => {
                 return itemValue === value;
             case 'CONTAINS':
                 return itemValue.includes(value);
+            case 'NOT_CONTAINS':
+                return !itemValue.includes(value);
             case 'GT':
                 return parseFloat(itemValue) > parseFloat(value);
             case 'LT':

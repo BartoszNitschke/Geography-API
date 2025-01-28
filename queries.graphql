@@ -47,6 +47,25 @@ query GetCountries {
   }
 }
 
+# Filtry i sortowanie
+query GetComplexQuery {
+  countries(
+    filter: [
+      { field: "name", operation: "CONTAINS", value: "a" },
+      { field: "capital", operation: "CONTAINS", value: "a" }
+    ],
+    sort: { field: "name", order: "DSC" }
+  ) {
+    name
+    capital
+    code
+    landmarks {
+      name
+      type
+    }
+  }
+}
+
 # Pobierz kraj po kodzie
 query GetCountry {
   country(code: "PL") {
