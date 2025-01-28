@@ -1,0 +1,270 @@
+# QUERIES (GET)
+
+# Pobierz wszystkie kontynenty
+query GetContinents {
+  continents {
+    name
+    code
+    countries {
+      name
+      capital
+    }
+    population
+    area
+  }
+}
+
+# Pobierz kontynent po kodzie
+query GetContinent {
+  continent(code: "EU") {
+    ... on Continent {
+      name
+      code
+      countries {
+        name
+        capital
+      }
+      population
+      area
+    }
+    ... on ErrorResponse {
+      message
+      errorCode
+    }
+  }
+}
+
+# Pobierz wszystkie kraje
+query GetCountries {
+  countries {
+    name
+    capital
+    code
+    landmarks {
+      name
+      type
+    }
+  }
+}
+
+# Pobierz kraj po kodzie
+query GetCountry {
+  country(code: "PL") {
+    ... on Country {
+      name
+      capital
+      code
+      landmarks {
+        name
+        type
+        description
+      }
+    }
+    ... on ErrorResponse {
+      message
+      errorCode
+    }
+  }
+}
+
+# Pobierz wszystkie zabytki
+query GetLandmarks {
+  landmarks(countryCode: "PL") {
+    name
+    type
+    description
+  }
+}
+
+# Pobierz zabytek po nazwie
+query GetLandmark {
+  landmark(countryCode: "PL", name: "Wawel") {
+    ... on Landmark {
+      name
+      type
+      description
+    }
+    ... on ErrorResponse {
+      message
+      errorCode
+    }
+  }
+}
+
+# MUTATIONS (POST, PUT, PATCH, DELETE)
+
+# Utwórz nowy kontynent
+mutation CreateContinent {
+  createContinent(
+    continentInput: {
+      name: "Europa"
+      code: "EU"
+      population: "746419440"
+      area: "10180000"
+    }
+  ) {
+    name
+    code
+    population
+    area
+  }
+}
+
+# Aktualizuj kontynent
+mutation UpdateContinent {
+  updateContinent(
+    code: "EU"
+    name: "Europa"
+    population: "746419440"
+    area: "10180000"
+  ) {
+    name
+    code
+    population
+    area
+  }
+}
+
+# Częściowa aktualizacja kontynentu
+mutation PatchContinent {
+  patchContinent(
+    code: "EU"
+    updates: {
+      name: "Europa"
+      population: "746419440"
+    }
+  ) {
+    name
+    code
+    population
+    area
+  }
+}
+
+# Usuń kontynent
+mutation DeleteContinent {
+  deleteContinent(code: "EU") {
+    success
+    message
+    code
+  }
+}
+
+# Utwórz nowy kraj
+mutation CreateCountry {
+  createCountry(
+    continentCode: "EU"
+    countryInput: {
+      name: "Polska"
+      capital: "Warszawa"
+      code: "PL"
+      landmarks: []
+    }
+  ) {
+    name
+    capital
+    code
+    landmarks {
+      name
+      type
+    }
+  }
+}
+
+# Aktualizuj kraj
+mutation UpdateCountry {
+  updateCountry(
+    code: "PL"
+    countryInput: {
+      name: "Polska"
+      capital: "Warszawa"
+      code: "PL"
+    }
+  ) {
+    name
+    capital
+    code
+  }
+}
+
+# Częściowa aktualizacja kraju
+mutation PatchCountry {
+  patchCountry(
+    code: "PL"
+    updates: {
+      name: "Polska"
+      capital: "Warszawa"
+    }
+  ) {
+    name
+    capital
+    code
+  }
+}
+
+# Usuń kraj
+mutation DeleteCountry {
+  deleteCountry(code: "PL") {
+    success
+    message
+    code
+  }
+}
+
+# Dodaj zabytek
+mutation AddLandmark {
+  addLandmark(
+    countryCode: "PL"
+    landmark: {
+      name: "Wawel"
+      type: "Zamek"
+      description: "Zamek królewski w Krakowie"
+    }
+  ) {
+    name
+    type
+    description
+  }
+}
+
+# Aktualizuj zabytek
+mutation UpdateLandmark {
+  updateLandmark(
+    countryCode: "PL"
+    landmarkName: "Wawel"
+    landmark: {
+      name: "Wawel"
+      type: "Zamek królewski"
+      description: "Zamek królewski na wzgórzu wawelskim w Krakowie"
+    }
+  ) {
+    name
+    type
+    description
+  }
+}
+
+# Częściowa aktualizacja zabytku
+mutation PatchLandmark {
+  patchLandmark(
+    countryCode: "PL"
+    landmarkName: "Wawel"
+    updates: {
+      type: "Zamek królewski"
+      description: "Zamek królewski na wzgórzu wawelskim w Krakowie"
+    }
+  ) {
+    name
+    type
+    description
+  }
+}
+
+# Usuń zabytek
+mutation DeleteLandmark {
+  deleteLandmark(countryCode: "PL", landmarkName: "Wawel") {
+    success
+    message
+    code
+  }
+} 

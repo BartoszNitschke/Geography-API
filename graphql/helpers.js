@@ -1,66 +1,33 @@
 export const applyFilters = (item, filters) => {
-    for (const { field, operation, value } of filters) {
-        const itemValue = item[field];
-
-        let compareValue = value;
-        let compareItemValue = itemValue;
-
-        if (field === 'population' || field === 'area') {
-            compareValue = parseFloat(value);
-            compareItemValue = parseFloat(itemValue);
-        }
+    return filters.every(filter => {
+        const { field, operation, value } = filter;
+        const itemValue = String(item[field]);
 
         switch (operation) {
-            case "EQUAL":
-                if (compareItemValue !== compareValue) return false;
-                break;
-            case "NOT_EQUAL":
-                if (compareItemValue === compareValue) return false;
-                break;
-            case "CONTAINS":
-                if (!String(itemValue).toLowerCase().includes(String(value).toLowerCase())) return false;
-                break;
-            case "NOT_CONTAINS":
-                if (String(itemValue).toLowerCase().includes(String(value).toLowerCase())) return false;
-                break;
-            case "GREATER":
-                if (compareItemValue <= compareValue) return false;
-                break;
-            case "GREATER_OR_EQUAL":
-                if (compareItemValue < compareValue) return false;
-                break;
-            case "LESS":
-                if (compareItemValue >= compareValue) return false;
-                break;
-            case "LESS_OR_EQUAL":
-                if (compareItemValue > compareValue) return false;
-                break;
-            case "STARTS_WITH":
-                if (!String(itemValue).toLowerCase().startsWith(String(value).toLowerCase())) return false;
-                break;
-            case "ENDS_WITH":
-                if (!String(itemValue).toLowerCase().endsWith(String(value).toLowerCase())) return false;
-                break;
+            case 'EQ':
+                return itemValue === value;
+            case 'CONTAINS':
+                return itemValue.includes(value);
+            case 'GT':
+                return parseFloat(itemValue) > parseFloat(value);
+            case 'LT':
+                return parseFloat(itemValue) < parseFloat(value);
             default:
-                throw new Error(`Nieobsługiwana operacja filtrowania: ${operation}`);
+                return true;
         }
-    }
-    return true;
+    });
 };
 
 export const validateContinentCode = (code) => {
-    if (typeof code !== 'string') return false;
     return /^[A-Z]{2}$/.test(code);
 };
 
 export const validateCountryCode = (code) => {
-    if (typeof code !== 'string') return false;
     return /^[A-Z]{2}$/.test(code);
 };
 
 export const validateLandmarkName = (name) => {
-    if (typeof name !== 'string') return false;
-    return name.length >= 2 && name.length <= 100;
+    return name && name.length >= 2 && name.length <= 100;
 };
 
 export const validateCountryData = (country) => {
@@ -81,14 +48,13 @@ export const validateCountryData = (country) => {
 };
 
 export const validateLandmarkData = (landmark) => {
-    const requiredFields = ['name', 'type', 'description'];
-    const missingFields = requiredFields.filter(field => !landmark[field]);
-    
-    if (missingFields.length > 0) {
-        throw new Error(`Brakujące wymagane pola: ${missingFields.join(', ')}`);
-    }
-
     if (!validateLandmarkName(landmark.name)) {
-        throw new Error('Nieprawidłowa nazwa zabytku (wymagane od 2 do 100 znaków)');
+        throw new Error("Nieprawidłowa nazwa zabytku");
+    }
+    if (!landmark.type || landmark.type.length < 2) {
+        throw new Error("Nieprawidłowy typ zabytku");
+    }
+    if (!landmark.description || landmark.description.length < 10) {
+        throw new Error("Nieprawidłowy opis zabytku");
     }
 };

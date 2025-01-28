@@ -13,9 +13,12 @@
   "dependencies": {
     "@apollo/server": "^4.11.3",
     "@faker-js/faker": "^9.0.3",
+    "@graphql-tools/schema": "^10.0.2",
+    "@graphql-tools/utils": "^10.0.12",
     "cors": "^2.8.5",
     "express": "^4.21.1",
-    "tsx": "^4.19.1"
+    "swagger-ui-express": "^5.0.0",
+    "graphql": "^16.8.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",

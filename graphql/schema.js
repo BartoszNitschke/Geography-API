@@ -37,6 +37,13 @@ export const typeDefs = `#graphql
         landmarks: [LandmarkInput]
     }
 
+    input ContinentInput {
+        name: String!
+        code: String!
+        population: String
+        area: String
+    }
+
     input FilterInput {
         field: String!
         operation: String!
@@ -46,6 +53,23 @@ export const typeDefs = `#graphql
     input SortInput {
         field: String!
         order: String!
+    }
+
+    input ContinentPatchInput {
+        name: String
+        population: String
+        area: String
+    }
+
+    input CountryPatchInput {
+        name: String
+        capital: String
+        landmarks: [LandmarkInput]
+    }
+
+    input LandmarkPatchInput {
+        type: String
+        description: String
     }
 
     type DeleteResponse {
@@ -71,18 +95,23 @@ export const typeDefs = `#graphql
         country(code: String!): CountryResult!
 
         landmarks(countryCode: String, filter: [FilterInput], sort: SortInput): [Landmark]!
+        landmark(countryCode: String!, name: String!): LandmarkResult!
     }
 
     type Mutation {
+        createContinent(continentInput: ContinentInput!): Continent!
+        updateContinent(code: String!, name: String!, population: String, area: String): Continent!
+        patchContinent(code: String!, updates: ContinentPatchInput!): Continent!
+        deleteContinent(code: String!): DeleteResponse!
+
         createCountry(continentCode: String!, countryInput: CountryInput!): Country!
         updateCountry(code: String!, countryInput: CountryInput!): Country!
+        patchCountry(code: String!, updates: CountryPatchInput!): Country!
         deleteCountry(code: String!): DeleteResponse!
 
         addLandmark(countryCode: String!, landmark: LandmarkInput!): Landmark!
         updateLandmark(countryCode: String!, landmarkName: String!, landmark: LandmarkInput!): Landmark!
+        patchLandmark(countryCode: String!, landmarkName: String!, updates: LandmarkPatchInput!): Landmark!
         deleteLandmark(countryCode: String!, landmarkName: String!): DeleteResponse!
-
-        updateContinent(code: String!, name: String!, population: String, area: String): Continent!
-        deleteContinent(code: String!): DeleteResponse!
     }
 `;
